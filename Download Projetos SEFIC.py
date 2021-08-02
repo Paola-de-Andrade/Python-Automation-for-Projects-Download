@@ -23,7 +23,7 @@ import os
 import requests
 
 id_inicial = 1690
-ultimo_id = 1786
+ultimo_id = 1877
 link_login = "http://sefic.cpfl.com.br/SEFICad"
 k=0
 
@@ -74,6 +74,8 @@ for id_projeto in range(id_inicial, ultimo_id+1):
     #print(parent_dir)
     
     folder_name = str(UC)+ "_" + nome_cliente[:20]
+    if len(nome_cliente) >= 20:
+        if nome_cliente[19]==" ": folder_name = str(UC)+ "_" + nome_cliente[:19]
     #print (folder_name)
     path = os.path.join(parent_dir, folder_name)
     # Create the directory
@@ -128,3 +130,4 @@ ROOT.withdraw()
 messagebox.showinfo("Status do download", "Ufa! Acabei aqui! Fiz o download de "+ str(k)+" propostas de projeto! Boa avaliação!")
 
 driver.close()
+
